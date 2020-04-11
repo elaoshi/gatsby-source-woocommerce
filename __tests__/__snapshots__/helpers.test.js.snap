@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Helpers: should return correct data from processNode 1`] = `
+Object {
+  "categories": Array [
+    Object {
+      "id": 23,
+      "wordpress_id": 23,
+    },
+  ],
+  "children": Any<Array>,
+  "id": 1234,
+  "internal": Object {
+    "contentDigest": "digest_string",
+    "type": "wcProducts",
+  },
+  "parent": Any<Object>,
+  "wordpress_id": 1234,
+}
+`;

@@ -1,0 +1,31 @@
+{
+  "name": "@elaoshi/gatsby-source-woocommerce",
+  "version": "0.11.1",
+  "description": "Gatsby source plugin for WooCommerce with improved field type support",
+  "main": "gatsby-node.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "author": "Eric, forked from Marc Glasser",
+  "license": "ISC",
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "gatsby-source-filesystem": "^2.0.27"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elaoshi/gatsby-source-woocommerce"
+  },
+  "bugs": {
+    "url": "https://github.com/elaoshi/gatsby-source-woocommerce/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin",
+    "woocommerce"
+  ],
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
