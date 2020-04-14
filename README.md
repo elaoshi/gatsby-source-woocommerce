@@ -59,7 +59,7 @@ plugins:[
         // Axios config options
       },
       // OPTIONAL: Support just fetch products from a special category id. 
-      //category: 29
+      // categories: [29,99]
       // OPTIONAL: Support fetch products options. 
       fetchOptions : {
         // status:"publish",
@@ -352,6 +352,8 @@ Some example queries for the fixed and fluid types are below.
 You can visit [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) for more information, and to learn about the different types of queries.
 
 ## Changelog
+categories
+- 0.12.3:  Support fetching products from multiple categories  [Elaoshi](https://github.com/elaoshi).
 - 0.12.0:  Add options for fetching products [Elaoshi](https://github.com/elaoshi).
 - 0.11.2:  Add category id of products fetched from server in configration [Elaoshi](https://github.com/elaoshi).
 - 0.11.0: [Add wordpress_parent_id field](https://github.com/pasdo501/gatsby-source-woocommerce/pull/20), to get around the `parent` field being overriden by the GraphQL node parent field. Additionally, also added wordpress_parent & wordpress_children bidirectional links to the nodes themselves.

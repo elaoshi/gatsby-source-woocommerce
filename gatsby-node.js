@@ -30,7 +30,7 @@ exports.sourceNodes = async (
     port = "",
     encoding = "",
     axios_config = null,
-    category = null,
+    categories = null,
     fetchOptions = null,
   } = configOptions;
 
@@ -52,45 +52,45 @@ exports.sourceNodes = async (
     let data_ = [];
     let page = 1;
     let pages;
+    for await(const category of categories){
+      do {
+        let args = per_page ? { per_page, page } : { page };
 
-    do {
-      let args = per_page ? { per_page, page } : { page };
-
-      if(category){
-        args['category'] = category;
-      }
-      if(fetchOptions){
-        args = Object.assign({}, args, fetchOptions);
-      }
-      await WooCommerce.get(fieldName, args)
-        .then((response) => {
-          if (response.status === 200) {
-            data_ = [...data_, ...response.data];
-            pages = parseInt(response.headers["x-wp-totalpages"]);
-            page++;
-            
-            
+        if(category){
+          args['category'] = category;
+        }
+        if(fetchOptions){
+          args = Object.assign({}, args, fetchOptions);
+        }
+        await WooCommerce.get(fieldName, args)
+          .then((response) => {
+            if (response.status === 200) {
+              data_ = [...data_, ...response.data];
+              pages = parseInt(response.headers["x-wp-totalpages"]);
+              page++;
+              
+              
 
 
-          } else {
+            } else {
+              console.warn(`
+                ========== WARNING FOR FIELD ${fieldName} ===========
+                The following error status was produced: ${response.data}
+                ================== END WARNING ==================
+              `);
+              return [];
+            }
+          })
+          .catch((error) => {
             console.warn(`
               ========== WARNING FOR FIELD ${fieldName} ===========
-              The following error status was produced: ${response.data}
+              The following error status was produced: ${error}
               ================== END WARNING ==================
             `);
             return [];
-          }
-        })
-        .catch((error) => {
-          console.warn(`
-            ========== WARNING FOR FIELD ${fieldName} ===========
-            The following error status was produced: ${error}
-            ================== END WARNING ==================
-          `);
-          return [];
-        });
-    } while (page <= pages);
-
+          });
+      } while (page <= pages);
+    }
     return data_;
   };
 
