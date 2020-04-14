@@ -31,6 +31,7 @@ exports.sourceNodes = async (
     encoding = "",
     axios_config = null,
     category = null,
+    fetchOptions = null,
   } = configOptions;
 
   // set up WooCommerce node api tool
@@ -57,6 +58,9 @@ exports.sourceNodes = async (
 
       if(category){
         args['category'] = category;
+      }
+      if(fetchOptions){
+        args = Object.assign({}, args, fetchOptions);
       }
       await WooCommerce.get(fieldName, args)
         .then((response) => {
